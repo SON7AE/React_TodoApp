@@ -2,9 +2,10 @@
 
 ## Check 기능 별 분류
 
-[ ] Today ToDo 생성
-[ ] Today ToDo List 만들기
+[v] Today ToDo 생성 : https://www.notion.so/ToDo-f9659f1848fb4b2ba184823b35e2de0f
+[v] Today ToDo List 만들기
 [ ] Today ToDo 지우기
+[ ] Today ToDo 수정
 [ ] Today Today ToDo, Weekend ToDo 만들기
 [ ] Today ToDo에서 Weekend ToDo로 옮기는 기능
 

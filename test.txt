@@ -1,0 +1,52 @@
+import { useEffect, useState } from 'react';
+import { dummyList } from './dummy_data';
+
+function App() {
+  const [state, setState] = useState(dummyList);
+
+  const listHandle = (item) => {
+    // const list = dummy.map((item, index) => {
+    //   item.text = index * 2 + item.title;
+    //   return item;
+    // });
+
+    return (
+      <li>
+        <span>title:{item.title}</span>
+        <br />
+        <span>value:{item.value}</span>
+        <br />
+        {item.text && <span>{item.text}</span>}
+      </li>
+    );
+  };
+
+  const listDataHandle = () => {
+    const list = dummyList.map((item, index) => {
+      item.text = index * 3;
+      return item;
+    });
+    setState(list);
+  };
+
+  useEffect(() => {
+    console.log('didMount 되냐?', state);
+    // didMount에다가 로직을 직접적으로 쓰지마셈
+    // 기존 라이프사이클 사용을 못함 => hook
+    listDataHandle();
+  }, []);
+
+  useEffect(() => {
+    console.log('didupdate 되냐?', state);
+    // didUpdate;
+    // state가 변경이 될 때를 감지해서 작동
+  }, [state]);
+
+  return (
+    <div className='App'>
+      <ul>{state.map((item) => listHandle(item))}</ul>
+    </div>
+  );
+}
+
+export default App;
