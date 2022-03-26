@@ -3,7 +3,9 @@
 ## Check 기능 별 분류
 
 [ ] Today ToDo 생성
+
 [ ] Today ToDo List 만들기
+
 [ ] Today ToDo 지우기
 [ ] Today Today ToDo, Weekend ToDo 만들기
 [ ] Today ToDo에서 Weekend ToDo로 옮기는 기능
