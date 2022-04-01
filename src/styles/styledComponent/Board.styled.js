@@ -13,13 +13,11 @@ export const Container = styled.div`
 export const Header = styled.header`
   width: calc(100% - 60px);
   height: calc(12.5% - 25px);
-  /* background-color: whitesmoke; */
   border-radius: 20px 20px 0 0;
   border-bottom: 5px solid whitesmoke;
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   padding: 25px 30px 0;
 
   p {
@@ -46,7 +44,7 @@ export const Header = styled.header`
 
 export const Nav = styled.nav`
   width: 100%;
-  height: 7.5%;
+  height: calc(10% - 5px);
   border-bottom: 5px solid whitesmoke;
 `;
 
@@ -60,11 +58,11 @@ export const Footer = styled.footer`
   justify-content: center;
 
   Button {
-    width: 40%;
+    width: 47.5%;
     justify-content: space-evenly;
 
     .icon {
-      margin-left: 10px;
+      margin-left: 15px;
     }
   }
 `;

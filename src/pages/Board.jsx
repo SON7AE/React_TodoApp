@@ -1,10 +1,11 @@
-import TodoList from './TodoList';
+import { Link } from 'react-router-dom';
+import TodoList from '../components/TodoList';
 import {
   Container,
   Header,
   Nav,
   Footer,
-} from '../styles/styledComponent/TodoContainer.styled';
+} from '../styles/styledComponent/Board.styled';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faBars,
@@ -14,7 +15,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import Button from '@mui/material/Button';
 
-function TodoContainer() {
+function Board() {
   return (
     <Container className='container'>
       <Header>
@@ -28,13 +29,26 @@ function TodoContainer() {
       <Nav></Nav>
       <TodoList></TodoList>
       <Footer>
-        <Button variant='contained' disableElevation>
-          ADD A TASK
-          <FontAwesomeIcon className='icon' icon={faPencil} />
-        </Button>
+        <Link
+          to='/addpost'
+          style={{
+            width: '100%',
+            height: '100%',
+            textDecoration: 'none',
+            color: 'white',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <Button variant='contained' disableElevation>
+            ADD A TASK
+            <FontAwesomeIcon className='icon' icon={faPencil} />
+          </Button>
+        </Link>
       </Footer>
     </Container>
   );
 }
 
-export default TodoContainer;
+export default Board;
