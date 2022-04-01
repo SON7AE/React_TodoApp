@@ -1,35 +1,39 @@
-import { useState, useEffect } from 'react';
 import TodoList from './TodoList';
+import {
+  Container,
+  Header,
+  Nav,
+  Footer,
+} from '../styles/styledComponent/TodoContainer.styled';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faBars,
+  faBell,
+  faSearch,
+  faPencil,
+} from '@fortawesome/free-solid-svg-icons';
+import Button from '@mui/material/Button';
 
 function TodoContainer() {
-  const [state, setState] = useState([]);
-
-  useEffect(() => {
-    // componentDidMount에다가 로직을 직접적으로 쓰면 안된다.
-    // 기존 라이프사이클 사용을 못함 => hook
-    const localListData = JSON.parse(localStorage.getItem('userTodo'));
-    setState(localListData);
-  }, []);
-
-  function sendInputValue() {
-    const list = [...state]; // => depth가 없기 때문에 얕은 복사만 해도 참조가 안된다.
-    const inputValue = document.querySelector('input').value;
-    console.log(inputValue);
-    list.push(inputValue);
-
-    setState(list);
-    // localStorage는 String Type만 저장된다.
-    localStorage.setItem('userTodo', JSON.stringify(list));
-  }
-
   return (
-    <>
-      <div className='inputBox'>
-        <input type='text' />
-        <button onClick={sendInputValue}>ADD TO DO</button>
-      </div>
-      <TodoList data={state} />
-    </>
+    <Container className='container'>
+      <Header>
+        <p>Board</p>
+        <div className='iconBox'>
+          <FontAwesomeIcon className='icon' icon={faSearch} />
+          <FontAwesomeIcon className='icon' icon={faBell} />
+          <FontAwesomeIcon className='icon' icon={faBars} />
+        </div>
+      </Header>
+      <Nav></Nav>
+      <TodoList></TodoList>
+      <Footer>
+        <Button variant='contained' disableElevation>
+          ADD A TASK
+          <FontAwesomeIcon className='icon' icon={faPencil} />
+        </Button>
+      </Footer>
+    </Container>
   );
 }
 

@@ -1,11 +1,11 @@
+import { Container } from './styles/styledComponent/Main.styled';
 import TodoContainer from './components/TodoContainer';
 
 function App() {
   return (
-    <div>
-      <h1>이것은 TODOLIST인데?</h1>
-      <TodoContainer />
-    </div>
+    <Container className='container'>
+      <TodoContainer></TodoContainer>
+    </Container>
   );
 }
 export default App;
