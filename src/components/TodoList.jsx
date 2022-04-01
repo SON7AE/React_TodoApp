@@ -1,7 +1,13 @@
 import { Container } from '../styles/styledComponent/TodoList.styed';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFolderOpen } from '@fortawesome/free-solid-svg-icons';
 function TodoList() {
-  return <Container>TodoList 목록 컴포넌트</Container>;
+  return (
+    <Container>
+      <p>목록이 비어있어요.</p>
+      <FontAwesomeIcon className='icon' icon={faFolderOpen} />
+    </Container>
+  );
 }
 
 export default TodoList;

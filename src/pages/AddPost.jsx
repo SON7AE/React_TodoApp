@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import {
   Container,
   Header,
@@ -17,12 +17,7 @@ import Button from '@mui/material/Button';
 
 function AddPost() {
   // 새로운 state 변수를 선언하고, state라고 부른다.
-  const [state, setState] = useState([
-    {
-      title: '',
-      content: '',
-    },
-  ]);
+  const [state, setState] = useState([]);
 
   const handleTitle = (event) => {
     // console.log(event.target.value);
@@ -40,6 +35,9 @@ function AddPost() {
   const createPost = () => {
     console.log('클릭 되었습니다.');
     console.log(state);
+
+    // localStorage는 String Type만 저장된다.
+    localStorage.setItem('userTodo', JSON.stringify(state));
   };
 
   return (
