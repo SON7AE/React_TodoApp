@@ -51,8 +51,12 @@ export const Main = styled.main`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-bottom: 10px;
+    margin-bottom: 12.5px;
     padding-left: 12.5px;
+
+    &:first-child {
+      margin-top: 12.5px;
+    }
 
     p {
       display: block;

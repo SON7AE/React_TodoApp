@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import {
   Container,
   Header,
@@ -15,6 +16,32 @@ import { TextField } from '@material-ui/core';
 import Button from '@mui/material/Button';
 
 function AddPost() {
+  // 새로운 state 변수를 선언하고, state라고 부른다.
+  const [state, setState] = useState([
+    {
+      title: '',
+      content: '',
+    },
+  ]);
+
+  const handleTitle = (event) => {
+    // console.log(event.target.value);
+    setState((prevState) => {
+      return { ...prevState, title: event.target.value };
+    });
+  };
+  const handleContent = (event) => {
+    // console.log(event.target.value);
+    setState((prevState) => {
+      return { ...prevState, content: event.target.value };
+    });
+  };
+  // Create a task 버튼을 누르면 input 값 저장되는 함수
+  const createPost = () => {
+    console.log('클릭 되었습니다.');
+    console.log(state);
+  };
+
   return (
     <Container className='container'>
       <Header>
@@ -41,15 +68,16 @@ function AddPost() {
             variant='outlined'
             required
             id='outlined-required'
-            defaultValue='제목을 입력하세요.'
             inputProps={{
-              placeholder: 'Placeholder',
+              placeholder: '제목을 입력하세요.',
               style: {
                 marginLeft: 10,
                 fontSize: 15,
               },
             }}
             className='textField'
+            // value={state}
+            onChange={handleTitle}
           />
         </div>
         <div>
@@ -61,15 +89,16 @@ function AddPost() {
             id='outlined-required'
             multiline
             rows={10}
-            defaultValue='내용을 입력하세요.'
             inputProps={{
-              placeholder: 'Placeholder',
+              placeholder: '내용을 입력하세요.',
               style: {
                 marginLeft: 10,
                 fontSize: 15,
               },
             }}
             className='textField'
+            // value={state}
+            onChange={handleContent}
           />
         </div>
       </Main>
@@ -86,7 +115,7 @@ function AddPost() {
             justifyContent: 'center',
           }}
         >
-          <Button variant='contained' disableElevation>
+          <Button variant='contained' disableElevation onClick={createPost}>
             CREATE A TASK
             <FontAwesomeIcon className='icon' icon={faCirclePlus} />
           </Button>
