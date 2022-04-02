@@ -21,16 +21,14 @@ function TodoList() {
   return (
     <Container>
       {state.length === 0 ? (
-        <p>목록이 비어있어요.</p>
+        <p>목록이 비어있어요. &nbsp;</p>
       ) : (
         <ul>
           {state.map((item, index) => {
             return (
               <li key={index}>
                 {item.title}
-                <Button onClick={() => navigate(`/addpost?id=${item.id}`)}>
-                  edit
-                </Button>
+                <Button onClick={() => navigate(`/addpost?id=${item.id}`)}>edit</Button>
                 <Button
                   sx={{
                     color: 'red',

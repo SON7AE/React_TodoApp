@@ -1,8 +1,8 @@
-### ToDoList 만들기
+### React To Do List 만들기
 
 ## Check 기능 별 분류
 
-[v] Today ToDo 생성 : https://www.notion.so/ToDo-f9659f1848fb4b2ba184823b35e2de0f
+[v] Today ToDo 생성
 
 [v] Today ToDo List 만들기
 

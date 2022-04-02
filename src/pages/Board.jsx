@@ -1,18 +1,8 @@
 import { Link } from 'react-router-dom';
 import TodoList from '../components/TodoList';
-import {
-  Container,
-  Header,
-  Nav,
-  Footer,
-} from '../styles/styledComponent/Board.styled';
+import { Container, Header, Nav, Footer } from '../styles/styledComponent/Board.styled';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faBars,
-  faBell,
-  faSearch,
-  faPencil,
-} from '@fortawesome/free-solid-svg-icons';
+import { faBars, faBell, faSearch, faPencil } from '@fortawesome/free-solid-svg-icons';
 import Button from '@mui/material/Button';
 
 function Board() {

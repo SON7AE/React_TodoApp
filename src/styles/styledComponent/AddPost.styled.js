@@ -1,10 +1,5 @@
 import styled from 'styled-components';
-import { Box } from '@mui/material';
-import { styled as muiStyled } from '@mui/system';
-
 import '../font/gmarketSansL.css';
-
-// export const TestComponent = muiStyled(Box)(({ theme }) => ({}));
 
 export const Container = styled.div`
   margin: auto;

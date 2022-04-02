@@ -1,17 +1,8 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import {
-  Container,
-  Header,
-  Nav,
-  Main,
-  Footer,
-} from '../styles/styledComponent/AddPost.styled';
+import { Container, Header, Nav, Main, Footer } from '../styles/styledComponent/AddPost.styled';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faCircleArrowLeft,
-  faCirclePlus,
-} from '@fortawesome/free-solid-svg-icons';
+import { faCircleArrowLeft, faCirclePlus } from '@fortawesome/free-solid-svg-icons';
 import { TextField } from '@material-ui/core';
 import Button from '@mui/material/Button';
 
