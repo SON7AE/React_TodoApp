@@ -1,5 +1,5 @@
 export default class Test2 {
-  constructor(value) {}
+  constructor(value) {}``
   test() {}
 
   test2() {}

@@ -1,4 +1,4 @@
-### React To Do List 만들기
+# React To Do List 만들기
 
 ## Check 기능 별 분류
 
