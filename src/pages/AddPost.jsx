@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   Container,
   Header,
@@ -17,28 +17,37 @@ import Button from '@mui/material/Button';
 
 function AddPost() {
   // 새로운 state 변수를 선언하고, state라고 부른다.
-  const [state, setState] = useState([]);
+  const [state, setState] = useState({
+    id: 0,
+    title: '',
+    content: '',
+  });
 
   const handleTitle = (event) => {
-    // console.log(event.target.value);
-    setState((prevState) => {
-      return { ...prevState, title: event.target.value };
-    });
+    setState({ id: 0, title: event.target.value, content: state.content });
+    console.log(event.target.value); // => 현재의 값
+    console.log(state); // => state는 현재의 값을 받아서 업데이트 해주는 애
   };
   const handleContent = (event) => {
-    // console.log(event.target.value);
-    setState((prevState) => {
-      return { ...prevState, content: event.target.value };
-    });
+    setState({ id: 0, title: state.title, content: event.target.value });
   };
   // Create a task 버튼을 누르면 input 값 저장되는 함수
   const createPost = () => {
     console.log('클릭 되었습니다.');
-    console.log(state);
-
+    const prevString = localStorage.getItem('userTodo');
+    let list = [state];
+    if (prevString) {
+      list = JSON.parse(prevString);
+      state.id = list[list.length - 1].id + 1;
+      list.push(state);
+    }
     // localStorage는 String Type만 저장된다.
-    localStorage.setItem('userTodo', JSON.stringify(state));
+    localStorage.setItem('userTodo', JSON.stringify(list));
   };
+
+  // useEffect()로 웹스토리지에 상태 저장하기
+  // React의 useEffect() 훅 함수를 사용하면 컴포넌트의 상태값을 웹 스토리지에 쉽게 저장해둘 수 있다.
+  // useEffect(() => {}, [state]);
 
   return (
     <Container className='container'>
@@ -46,7 +55,7 @@ function AddPost() {
         <Link
           to='/'
           style={{
-            color: 'royalblue',
+            color: 'red',
             textDecoration: 'none',
             display: 'flex',
             alignItems: 'center',
