@@ -35,11 +35,11 @@ function AddPost() {
       return;
     }
 
-    const prevString = localStorage.getItem('userTodo');
+    const prevState = localStorage.getItem('userTodo');
     let list = [state];
 
-    if (prevString) {
-      list = JSON.parse(prevString);
+    if (prevState) {
+      list = JSON.parse(prevState);
       state.id = list[list.length - 1].id + 1;
       list.push(state);
     }
@@ -58,8 +58,7 @@ function AddPost() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-          }}
-        >
+          }}>
           <FontAwesomeIcon className='icon' icon={faCircleArrowLeft} />
         </Link>
         <p>Add Task</p>
@@ -118,8 +117,7 @@ function AddPost() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-          }}
-        >
+          }}>
           <Button variant='contained' disableElevation onClick={createPost}>
             CREATE A TASK
             <FontAwesomeIcon className='icon' icon={faCirclePlus} />

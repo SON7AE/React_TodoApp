@@ -7,17 +7,18 @@ import { useNavigate } from 'react-router-dom';
 
 function TodoList() {
   const [state, setState] = useState([]);
+  // const [modifiedState, setModifiedState] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
     // componentDidMount
-    const local = JSON.parse(localStorage.getItem('userTodo'));
-    if (local) setState(local);
+    const savedLocalData = JSON.parse(localStorage.getItem('userTodo'));
+    if (savedLocalData) setState(savedLocalData);
   }, []);
 
   const removeHandle = (id) => {
     // 전달받은 id와 비교하려는 id가 일치하지 않는 것만 state에 재할당
-    let modifiedTodo = setState(state.filter((item) => item.id !== id));
+    setState(state.filter((item) => item.id !== id));
   };
 
   return (
@@ -42,8 +43,7 @@ function TodoList() {
                     minWidth: 45,
                     ml: 2,
                   }}
-                  onClick={() => navigate(`/addpost?id=${item.id}`)}
-                >
+                  onClick={() => navigate(`/addpost?id=${item.id}`)}>
                   <FontAwesomeIcon icon={faPenToSquare} />
                 </Button>
                 <Button
@@ -53,8 +53,7 @@ function TodoList() {
                     minWidth: 45,
                     mr: 1,
                   }}
-                  onClick={() => removeHandle(item.id)}
-                >
+                  onClick={() => removeHandle(item.id)}>
                   <FontAwesomeIcon icon={faTrashCan} />
                 </Button>
               </li>
