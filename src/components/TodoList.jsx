@@ -1,7 +1,7 @@
 import { Container } from '../styles/styledComponent/TodoList.styed';
 import { Button } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFolderOpen } from '@fortawesome/free-solid-svg-icons';
+import { faFolderOpen, faPenToSquare, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -21,28 +21,42 @@ function TodoList() {
   return (
     <Container>
       {state.length === 0 ? (
-        <p>목록이 비어있어요. &nbsp;</p>
+        <>
+          <p>목록이 비어있어요. &nbsp;</p>
+          <FontAwesomeIcon className='icon' icon={faFolderOpen} />
+        </>
       ) : (
         <ul>
           {state.map((item, index) => {
             return (
               <li key={index}>
-                {item.title}
-                <Button onClick={() => navigate(`/addpost?id=${item.id}`)}>edit</Button>
+                <div> {item.title}</div>
                 <Button
                   sx={{
-                    color: 'red',
+                    fontSize: '20px',
+                    minWidth: 45,
+                    ml: 2,
+                  }}
+                  onClick={() => navigate(`/addpost?id=${item.id}`)}
+                >
+                  <FontAwesomeIcon icon={faPenToSquare} />
+                </Button>
+                <Button
+                  sx={{
+                    color: '#DA2600',
+                    fontSize: '20px',
+                    minWidth: 45,
+                    mr: 1,
                   }}
                   onClick={() => removeHandle()}
                 >
-                  remove
+                  <FontAwesomeIcon icon={faTrashCan} />
                 </Button>
               </li>
             );
           })}
         </ul>
       )}
-      <FontAwesomeIcon className='icon' icon={faFolderOpen} />
     </Container>
   );
 }
