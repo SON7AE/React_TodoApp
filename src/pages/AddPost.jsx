@@ -4,6 +4,7 @@ import { Container, Header, Nav, Main, Footer } from '../styles/styledComponent/
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleArrowLeft, faCirclePlus } from '@fortawesome/free-solid-svg-icons';
 import { TextField } from '@material-ui/core';
+import Swal from 'sweetalert2';
 import Button from '@mui/material/Button';
 
 function AddPost() {
@@ -16,18 +17,27 @@ function AddPost() {
 
   const handleTitle = (event) => {
     setState({ id: 0, title: event.target.value, content: state.content });
-    console.log(event.target.value); // => 현재의 값
-    console.log(state); // => state는 현재의 값을 받아서 업데이트 해주는 것
+    // console.log(event.target.value); // => 현재의 값
+    // console.log(state); // => state는 현재의 값을 받아서 업데이트 해주는 후, state 값 조회
   };
   const handleContent = (event) => {
     setState({ id: 0, title: state.title, content: event.target.value });
   };
-  // Create a task 버튼을 누르면 input 값 저장되는 함수
+  // CREATE A TASK 버튼을 누르면 input 값 저장되는 함수
   const createPost = () => {
-    console.log('클릭 되었습니다.');
-    const prevString = localStorage.getItem('userTodo');
+    // console.log('클릭 되었습니다.');
+    if (state.title === '' || state.content === '') {
+      Swal.fire({
+        title: 'Error',
+        text: '제목과 내용을 모두 입력해주세요.',
+        icon: 'error',
+      });
+      return;
+    }
 
+    const prevString = localStorage.getItem('userTodo');
     let list = [state];
+
     if (prevString) {
       list = JSON.parse(prevString);
       state.id = list[list.length - 1].id + 1;
@@ -83,7 +93,7 @@ function AddPost() {
             required
             id='outlined-required'
             multiline
-            rows={10}
+            minRows={10}
             inputProps={{
               placeholder: '내용을 입력하세요.',
               style: {

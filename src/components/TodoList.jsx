@@ -1,7 +1,7 @@
 import { Container } from '../styles/styledComponent/TodoList.styed';
 import { Button } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFolderOpen, faPenToSquare, faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import { faFileLines, faFolderOpen, faPenToSquare, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -10,12 +10,14 @@ function TodoList() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    // componentDidMount
     const local = JSON.parse(localStorage.getItem('userTodo'));
     if (local) setState(local);
   }, []);
 
-  const removeHandle = () => {
-    // remove handle
+  const removeHandle = (id) => {
+    // 전달받은 id와 비교하려는 id가 일치하지 않는 것만 state에 재할당
+    let modifiedTodo = setState(state.filter((item) => item.id !== id));
   };
 
   return (
@@ -30,7 +32,10 @@ function TodoList() {
           {state.map((item, index) => {
             return (
               <li key={index}>
-                <div> {item.title}</div>
+                <div>
+                  <FontAwesomeIcon className='todoIcon' icon={faFileLines} />
+                  {item.title}
+                </div>
                 <Button
                   sx={{
                     fontSize: '20px',
@@ -48,7 +53,7 @@ function TodoList() {
                     minWidth: 45,
                     mr: 1,
                   }}
-                  onClick={() => removeHandle()}
+                  onClick={() => removeHandle(item.id)}
                 >
                   <FontAwesomeIcon icon={faTrashCan} />
                 </Button>

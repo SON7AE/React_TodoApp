@@ -30,8 +30,9 @@ export const Container = styled.div`
     align-items: center;
     width: 100%;
     height: 100%;
-    background-color: wheat;
     overflow: scroll;
+    /* background-color: #d2ebff; */
+    background-color: #3874cb;
 
     li {
       display: flex;
@@ -46,11 +47,16 @@ export const Container = styled.div`
       div {
         width: calc(75% - 30px);
         height: 100%;
-        background-color: whitesmoke;
         display: flex;
         align-items: center;
         padding: 2px 0px 0px 15px;
         font-family: 'Cafe24SsurroundAir';
+        font-size: 18px;
+
+        .todoIcon {
+          font-size: 18px;
+          margin: 0 10px 3px 0;
+        }
       }
     }
   }
