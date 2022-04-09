@@ -17,8 +17,11 @@ function TodoList() {
   }, []);
 
   const removeHandle = (id) => {
+    const filterData = state.filter((item) => item.id !== id); // 새로운 배열을 리턴해서 괜찮긴 함
+    // state를 직접 컨트롤 하면 좋지 않은 참조 개새끼
     // 전달받은 id와 비교하려는 id가 일치하지 않는 것만 state에 재할당
-    setState(state.filter((item) => item.id !== id));
+    setState(filterData);
+    localStorage.setItem('userTodo', JSON.stringify(filterData));
   };
 
   return (
