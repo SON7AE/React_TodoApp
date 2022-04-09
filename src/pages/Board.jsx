@@ -25,8 +25,24 @@ function Board() {
           <FontAwesomeIcon className='icon' icon={faBars} onClick={() => stateValueHandle('menu')} />
         </div>
       </Header>
-      <div>{state === 'search' && <TextField value={value} onChange={(e) => setValue(e.target.value)} />}</div>
-      <Nav></Nav>
+      <Nav>
+        {state === 'search' && (
+          <TextField
+            value={value}
+            fullWidth
+            height='50'
+            inputProps={{
+              placeholder: '검색할 내용을 입력하세요.',
+              style: {
+                marginLeft: 5,
+                fontSize: 15,
+              },
+            }}
+            onChange={(e) => setValue(e.target.value)}
+            className='searchBox'
+          />
+        )}
+      </Nav>
       <TodoList searchValue={value} />
       <Footer>
         <Link

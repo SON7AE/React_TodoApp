@@ -46,7 +46,7 @@ function TodoList({ searchValue }) {
 
   return (
     <Container>
-      {state.length === 0 ? (
+      {state == null || state.length === 0 ? (
         <>
           <p>목록이 비어있어요. &nbsp;</p>
           <FontAwesomeIcon className='icon' icon={faFolderOpen} />

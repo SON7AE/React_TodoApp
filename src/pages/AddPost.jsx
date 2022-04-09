@@ -2,7 +2,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { Container, Header, Nav, Main, Footer } from '../styles/styledComponent/AddPost.styled';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleArrowLeft, faCirclePlus } from '@fortawesome/free-solid-svg-icons';
+import { faCheckCircle, faCircleArrowLeft, faCirclePlus } from '@fortawesome/free-solid-svg-icons';
 import { TextField } from '@material-ui/core';
 import Swal from 'sweetalert2';
 import Button from '@mui/material/Button';
@@ -10,9 +10,7 @@ import Button from '@mui/material/Button';
 function AddPost() {
   const { search } = useLocation();
   const getId = search?.split('=')[1];
-
   //  search? => search && search ? '' : undefined
-
   // 새로운 state 변수를 선언하고, state라고 부른다.
   const [state, setState] = useState({
     id: 0,
@@ -25,9 +23,11 @@ function AddPost() {
     // console.log(event.target.value); // => 현재의 값
     // console.log(state); // => state는 현재의 값을 받아서 업데이트 해주는 후, state 값 조회
   };
+
   const handleContent = (event) => {
     setState({ id: 0, title: state.title, content: event.target.value });
   };
+
   const editPost = () => {
     const data = getLocalData();
 
@@ -36,9 +36,9 @@ function AddPost() {
       data[index].title = state.title;
       data[index].content = state.content;
     }
-
     localStorage.setItem('userTodo', JSON.stringify(data));
   };
+
   const createPost = () => {
     const prevState = localStorage.getItem('userTodo');
     let list = [state];
@@ -148,22 +148,33 @@ function AddPost() {
         </div>
       </Main>
       <Footer>
-        <Button
-          variant='contained'
+        <Link
+          to='/'
           style={{
-            width: '100%',
-            height: '100%',
+            color: 'red',
             textDecoration: 'none',
-            color: 'white',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-          }}
-          disableElevation
-          onClick={handlePost}>
-          CREATE A TASK
-          <FontAwesomeIcon className='icon' icon={faCirclePlus} />
-        </Button>
+          }}>
+          <Button
+            variant='contained'
+            style={{
+              width: '100%',
+              height: '100%',
+              textDecoration: 'none',
+              color: 'white',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+            disableElevation
+            onClick={handlePost}>
+            {getId ? 'MODIFIED A TASK' : 'CREATED A TASK'}
+
+            <FontAwesomeIcon className='icon' icon={getId ? faCheckCircle : faCirclePlus} />
+          </Button>
+        </Link>
       </Footer>
     </Container>
   );

@@ -46,6 +46,14 @@ export const Nav = styled.nav`
   width: 100%;
   height: calc(10% - 5px);
   border-bottom: 5px solid whitesmoke;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .searchBox {
+    margin-top: 5px;
+    width: 80%;
+  }
 `;
 
 export const Footer = styled.footer`
