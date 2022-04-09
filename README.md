@@ -6,9 +6,9 @@
 
 [v] Today ToDo List 만들기
 
-[ ] Today ToDo 지우기
+[v] Today ToDo 지우기
 
-[ ] Today ToDo 수정
+[v] Today ToDo 수정
 
 [ ] Today Today ToDo, Weekend ToDo 만들기
 
