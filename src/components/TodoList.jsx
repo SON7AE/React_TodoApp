@@ -5,16 +5,36 @@ import { faFileLines, faFolderOpen, faPenToSquare, faTrashCan } from '@fortaweso
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function TodoList() {
+function TodoList({ searchValue }) {
   const [state, setState] = useState([]);
   // const [modifiedState, setModifiedState] = useState(false);
   const navigate = useNavigate();
 
+  const filterHandle = () => {
+    const list = state.filter((item) => item.title.includes(searchValue));
+    // filter => 만족하는 조건의 요소만 새로운 배열로 리턴하는 메소드임
+    setState(list);
+  };
+
+  const getLocalData = () => {
+    const data = JSON.parse(localStorage.getItem('userTodo'));
+
+    return data;
+  };
+
   useEffect(() => {
     // componentDidMount
-    const savedLocalData = JSON.parse(localStorage.getItem('userTodo'));
+    const savedLocalData = getLocalData();
     if (savedLocalData) setState(savedLocalData);
   }, []);
+
+  useEffect(() => {
+    if (searchValue) filterHandle();
+    else {
+      const data = getLocalData();
+      setState(data);
+    }
+  }, [searchValue]);
 
   const removeHandle = (id) => {
     const filterData = state.filter((item) => item.id !== id); // 새로운 배열을 리턴해서 괜찮긴 함

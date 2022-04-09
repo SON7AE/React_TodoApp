@@ -11,6 +11,8 @@ function AddPost() {
   const { search } = useLocation();
   const getId = search?.split('=')[1];
 
+  //  search? => search && search ? '' : undefined
+
   // 새로운 state 변수를 선언하고, state라고 부른다.
   const [state, setState] = useState({
     id: 0,
@@ -26,7 +28,6 @@ function AddPost() {
   const handleContent = (event) => {
     setState({ id: 0, title: state.title, content: event.target.value });
   };
-
   const editPost = () => {
     const data = getLocalData();
 
@@ -38,7 +39,6 @@ function AddPost() {
 
     localStorage.setItem('userTodo', JSON.stringify(data));
   };
-
   const createPost = () => {
     const prevState = localStorage.getItem('userTodo');
     let list = [state];
