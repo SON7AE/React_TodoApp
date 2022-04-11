@@ -171,7 +171,6 @@ function AddPost() {
             disableElevation
             onClick={handlePost}>
             {getId ? 'MODIFIED A TASK' : 'CREATED A TASK'}
-
             <FontAwesomeIcon className='icon' icon={getId ? faCheckCircle : faCirclePlus} />
           </Button>
         </Link>
